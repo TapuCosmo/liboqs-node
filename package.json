@@ -6,10 +6,11 @@
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm run liboqs:build && node-gyp rebuild",
+    "build": "node-gyp rebuild",
     "build:dev": "node-gyp rebuild",
     "docs:build": "jsdoc -c ./docs/jsdoc.json",
     "liboqs:build": "cd deps/liboqs && rm -rf ./build && mkdir build && cd build && cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -DOQS_BUILD_ONLY_LIB=ON -DOQS_PORTABLE_BUILD=ON -DOQS_USE_OPENSSL=ON -DOQS_USE_CPU_EXTENSIONS=ON -GNinja .. && ninja",
+    "preinstall": "npm run liboqs:build",
     "test": "mocha --bail false"
   },
   "homepage": "https://github.com/TapuCosmo/liboqs-node#readme",
