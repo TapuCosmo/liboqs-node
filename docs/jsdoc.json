@@ -1,0 +1,39 @@
+{
+  "opts": {
+    "recurse": true,
+    "encoding": "utf8",
+    "template": "node_modules/docdash",
+    "destination": "./docs/out/"
+  },
+  "plugins": [
+    "./docs/plugins/commentsOnly",
+    "plugins/markdown"
+  ],
+  "templates": {
+    "default": {
+      "cleverLinks": true,
+      "includeDate": false
+    },
+    "docdash": {
+      "typedefs": true,
+      "openGraph": {
+        "title": "liboqs-node Documentation",
+        "type": "website",
+        "site_name": "liboqs-node",
+        "url": ""
+      },
+      "meta": {
+        "title": "liboqs-node Documentation",
+        "description": "Node.js bindings for liboqs.",
+        "keyword": "liboqs oqs quantum crypto cryptography post-quantum encrypt encryption asymmetric"
+      }
+    }
+  },
+  "source": {
+    "include": [
+      "./src/",
+      "./lib/"
+    ],
+    "includePattern": ".+\\.(cpp|h|js)$"
+  }
+}

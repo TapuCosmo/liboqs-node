@@ -1,0 +1,47 @@
+{
+  "name": "liboqs-node",
+  "version": "0.0.1",
+  "description": "Node.js bindings for liboqs.",
+  "author": "Vietbao Tran <tapucosmo@gmail.com> (TapuCosmo)",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "node-gyp rebuild",
+    "docs:build": "jsdoc -c ./docs/jsdoc.json",
+    "liboqs:build": "cd deps/liboqs && rm -rf ./build && mkdir build && cd build && cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -DOQS_BUILD_ONLY_LIB=ON -DOQS_PORTABLE_BUILD=ON -DOQS_USE_OPENSSL=ON -DOQS_USE_CPU_EXTENSIONS=ON -GNinja .. && ninja",
+    "test": "mocha --bail false"
+  },
+  "homepage": "https://github.com/TapuCosmo/liboqs-node#readme",
+  "bugs": {
+    "url": "https://github.com/TapuCosmo/liboqs-node/issues"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/TapuCosmo/liboqs-node.git"
+  },
+  "keywords": [
+    "liboqs",
+    "oqs",
+    "quantum",
+    "crypto",
+    "cryptography",
+    "post-quantum",
+    "encrypt",
+    "encryption",
+    "asymmetric"
+  ],
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "node-addon-api": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-bytes": "^0.1.2",
+    "docdash": "^1.2.0",
+    "jsdoc": "^3.6.5",
+    "mocha": "^8.1.2"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

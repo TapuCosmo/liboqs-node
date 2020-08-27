@@ -1,0 +1,4 @@
+build/
+docs/out/
+node_modules/
+*.gch

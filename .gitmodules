@@ -1,0 +1,8 @@
+[submodule "deps/liboqs"]
+	path = deps/liboqs
+	url = https://github.com/open-quantum-safe/liboqs.git
+	branch = master
+[submodule "deps/liboqs-cpp"]
+	path = deps/liboqs-cpp
+	url = https://github.com/open-quantum-safe/liboqs-cpp.git
+	branch = master
