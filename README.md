@@ -29,6 +29,8 @@ Please report any issues.)
 You will first need to install the [liboqs dependencies](https://github.com/open-quantum-safe/liboqs#quickstart).
 Follow the instructions for your OS.
 
+Additionally, you should have OpenSSL >=v1.1.1.
+
 Then, install the module as usual: `npm install liboqs-node`.
 
 There are currently no prebuilt binaries.
