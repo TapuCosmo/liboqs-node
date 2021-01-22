@@ -1,17 +1,26 @@
 {
   "name": "liboqs-node",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Node.js bindings for liboqs.",
   "author": "Vietbao Tran <tapucosmo@gmail.com> (TapuCosmo)",
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "build": "node-gyp rebuild",
+    "build": "npm run liboqs:build && node-gyp rebuild",
     "build:dev": "node-gyp rebuild",
     "docs:build": "jsdoc -c ./docs/jsdoc.json",
+    "install": "node-pre-gyp install --fallback-to-build",
     "liboqs:build": "cd deps/liboqs && rm -rf ./build && mkdir build && cd build && cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -DOQS_BUILD_ONLY_LIB=ON -DOQS_PORTABLE_BUILD=ON -DOQS_USE_OPENSSL=ON -DOQS_USE_CPU_EXTENSIONS=ON -GNinja .. && ninja",
-    "preinstall": "npm run liboqs:build",
+    "publish:prepare": "node-pre-gyp configure && node-pre-gyp rebuild && node-pre-gyp package",
+    "publish:draft": "NODE_PRE_GYP_GITHUB_TOKEN=$(cat publish-token) node-pre-gyp-github publish",
     "test": "mocha --bail false"
+  },
+  "binary": {
+    "module_name": "oqs_node",
+    "module_path": "./build/Release",
+    "host": "https://github.com/TapuCosmo/liboqs-node/releases/download/",
+    "remote_path": "{version}",
+    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz"
   },
   "homepage": "https://github.com/TapuCosmo/liboqs-node#readme",
   "bugs": {
@@ -34,7 +43,8 @@
   ],
   "dependencies": {
     "bindings": "^1.5.0",
-    "node-addon-api": "^3.0.0"
+    "node-addon-api": "^3.0.0",
+    "node-pre-gyp": "^0.17.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

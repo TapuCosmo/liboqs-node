@@ -1,0 +1,36 @@
+image:
+- Visual Studio 2017
+- Ubuntu
+
+build: off
+
+environment:
+  matrix:
+    - nodejs_version: 12
+      platform: x64
+    - nodejs_version: 13
+      platform: x64
+    - nodejs_version: 14
+      platform: x64
+    - nodejs_version: 15
+      platform: x64
+
+install:
+  - sh: sudo apt-get update
+  - sh: sudo apt-get install -y cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz libssl-dev
+  - npm run build
+
+artifacts:
+  - path: build/stage/*/*
+
+deploy:
+  release: build-$(APPVEYOR_BUILD_VERSION)
+  provider: GitHub
+  auth_token:
+    secure: b3cWFxhvVOhKJNSTbKjFwhUzimbeQMqjb/eUlJLGMdaeZrBaqPI0A8H/J8Mmrre2
+  artifact: build/stage/*/*
+  draft: true
+  prerelease: false
+  on:
+    branch: master
+    APPVEYOR_REPO_TAG: true
