@@ -16,8 +16,9 @@ environment:
       platform: x64
 
 install:
-  - sh: sudo apt-get update
-  - sh: sudo apt-get install -y cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz libssl-dev
+  - cmd: cd %APPVEYOR_BUILD_FOLDER% && git submodule update --init --recursive
+  - sh: cd ""$APPVEYOR_BUILD_FOLDER" && git submodule update --init --recursive
+  - sh: sudo apt-get update && sudo apt-get install -y cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz libssl-dev
   - npm run build
 
 artifacts:
