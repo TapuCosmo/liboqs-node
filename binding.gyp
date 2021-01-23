@@ -12,23 +12,11 @@
       ],
       "actions": [
         {
-          "action_name": "ensure_deps",
+          "action_name": "prebuild",
           "inputs": [],
-          "outputs": [
-            "./deps/liboqs/src/oqs.h",
-            "./deps/liboqs-cpp/include/oqs_cpp.h"
-          ],
-          "action": ["npm", "run", "ensure_submodules"],
-          "message": "Ensuring submodules"
-        },
-        {
-          "action_name": "ensure_liboqs",
-          "inputs": [],
-          "outputs": [
-            "./deps/liboqs/build/include/oqs/oqs.h"
-          ],
-          "action": ["npm", "run", "liboqs:build_if_not_exists"],
-          "message": "Ensuring liboqs is built"
+          "outputs": [""],
+          "action": ["npm", "run", "prebuild"],
+          "message": "Executing prebuild script"
         }
       ],
       "sources": [
