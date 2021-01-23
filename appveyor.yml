@@ -8,22 +8,24 @@ environment:
   matrix:
     - nodejs_version: 12
       platform: x64
-      GCC_VERSION: 10
+      gcc_version: 10
     - nodejs_version: 13
       platform: x64
-      GCC_VERSION: 10
+      gcc_version: 10
     - nodejs_version: 14
       platform: x64
-      GCC_VERSION: 10
+      gcc_version: 10
     - nodejs_version: 15
       platform: x64
-      GCC_VERSION: 10
+      gcc_version: 10
 
 install:
   # - cmd: set OPENSSL_ROOT_DIR="C:\OpenSSL-v111-Win64\lib\"
   # - cmd: cd %APPVEYOR_BUILD_FOLDER% && git submodule update --init --recursive
   - sh: cd "$APPVEYOR_BUILD_FOLDER" && git submodule update --init --recursive
   - sh: sudo apt-get update && sudo apt-get install -y cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz libssl-dev
+  - sh: sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100
+  - sh: sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
   - sh: gcc --version
   - npm ci
   - npm run build
