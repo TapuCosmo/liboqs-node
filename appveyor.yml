@@ -1,6 +1,6 @@
 image:
-- Visual Studio 2019
-- Ubuntu
+# - Visual Studio 2019 - Can't get Windows build to work yet
+- ubuntu2004
 
 build: off
 
@@ -16,8 +16,8 @@ environment:
       platform: x64
 
 install:
-  - cmd: set OPENSSL_ROOT_DIR="C:\OpenSSL-v111-Win64\lib\"
-  - cmd: cd %APPVEYOR_BUILD_FOLDER% && git submodule update --init --recursive
+  # - cmd: set OPENSSL_ROOT_DIR="C:\OpenSSL-v111-Win64\lib\"
+  # - cmd: cd %APPVEYOR_BUILD_FOLDER% && git submodule update --init --recursive
   - sh: cd "$APPVEYOR_BUILD_FOLDER" && git submodule update --init --recursive
   - sh: sudo apt-get update && sudo apt-get install -y cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz libssl-dev
   - npm ci
