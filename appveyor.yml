@@ -19,7 +19,7 @@ install:
   # - cmd: set OPENSSL_ROOT_DIR="C:\OpenSSL-v111-Win64\lib\"
   # - cmd: cd %APPVEYOR_BUILD_FOLDER% && git submodule update --init --recursive
   - sh: cd "$APPVEYOR_BUILD_FOLDER" && git submodule update --init --recursive
-  - sh: sudo apt-get update && sudo apt-get install -y cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz libssl-dev
+  - sh: sudo apt-get update && sudo apt-get install -y cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz libssl-dev gcc-10 g++-10
   - npm ci
   - npm run build
 
