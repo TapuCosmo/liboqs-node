@@ -8,6 +8,7 @@
   "scripts": {
     "build": "node-gyp rebuild",
     "build:all": "npm run liboqs:build && node-gyp rebuild",
+    "build:package": "npm run build && node-pre-gyp package",
     "docs:build": "jsdoc -c ./docs/jsdoc.json",
     "ensure_submodules": "node -e \"(require('fs').existsSync('./deps/liboqs/src/oqs.h') && require('fs').existsSync('./deps/liboqs-cpp/include/oqs_cpp.h')) || require('child_process').execSync('git submodule update --init --recursive', {stdio: 'inherit'})\"",
     "install": "node-pre-gyp install --fallback-to-build",

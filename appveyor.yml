@@ -20,8 +20,8 @@ install:
   - sh: sudo apt-get update && sudo apt-get install -y cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz libssl-dev gcc-10 g++-10
   - sh: sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10
   - sh: nvm install "$nodejs_version" && nvm use "$nodejs_version"
-  - npm ci
-  - npm run build
+  - npm ci --ignore-scripts
+  - npm run build:package
 
 artifacts:
   - path: build/stage/*/*
