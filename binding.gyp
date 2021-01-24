@@ -10,6 +10,15 @@
         "-fexceptions",
         "-std=c++2a"
       ],
+      "actions": [
+        {
+          "action_name": "prebuild",
+          "inputs": [],
+          "outputs": [""],
+          "action": ["npm", "run", "prebuild"],
+          "message": "Executing prebuild script"
+        }
+      ],
       "sources": [
         "./src/addon.cpp",
         "./src/KEMs.cpp",
@@ -27,7 +36,8 @@
         "../deps/liboqs/build/lib/liboqs.a"
       ],
       "defines": [
-        "NAPI_CPP_EXCEPTIONS"
+        "NAPI_CPP_EXCEPTIONS",
+        "NAPI_VERSION=6"
       ]
     }
   ]

@@ -6,11 +6,15 @@
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm run liboqs:build && node-gyp rebuild",
-    "build:dev": "node-gyp rebuild",
+    "build": "node-gyp rebuild",
+    "build:all": "npm run liboqs:build && node-gyp rebuild",
+    "build:package": "npm run build && node-pre-gyp package",
     "docs:build": "jsdoc -c ./docs/jsdoc.json",
+    "ensure_submodules": "node ./scripts/ensure_submodules.js",
     "install": "node-pre-gyp install --fallback-to-build",
     "liboqs:build": "cd deps/liboqs && rm -rf ./build && mkdir build && cd build && cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -DOQS_BUILD_ONLY_LIB=ON -DOQS_PORTABLE_BUILD=ON -DOQS_USE_OPENSSL=ON -DOQS_USE_CPU_EXTENSIONS=ON -GNinja .. && ninja",
+    "liboqs:build_if_not_exists": "node -e \"require('fs').existsSync('./deps/liboqs/build/include/oqs/oqs.h') || require('child_process').execSync('npm run liboqs:build', {stdio: 'inherit'})\"",
+    "prebuild": "npm run ensure_submodules && npm run liboqs:build_if_not_exists",
     "publish:prepare": "node-pre-gyp configure && node-pre-gyp rebuild && node-pre-gyp package",
     "publish:draft": "NODE_PRE_GYP_GITHUB_TOKEN=$(cat publish-token) node-pre-gyp-github publish",
     "test": "mocha --bail false"
@@ -54,6 +58,13 @@
     "mocha": "^8.1.2"
   },
   "engines": {
-    "node": ">=12.0.0"
-  }
+    "node": ">=12.11.0"
+  },
+  "files": [
+    "lib/",
+    "src/",
+    "scripts/",
+    "binding.gyp",
+    "npm-shrinkwrap.json"
+  ]
 }
