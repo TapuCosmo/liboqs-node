@@ -36,7 +36,8 @@
         "../deps/liboqs/build/lib/liboqs.a"
       ],
       "defines": [
-        "NAPI_CPP_EXCEPTIONS"
+        "NAPI_CPP_EXCEPTIONS",
+        "NAPI_VERSION=6"
       ]
     }
   ]
