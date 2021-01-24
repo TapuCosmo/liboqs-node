@@ -23,17 +23,24 @@ const {
 
 ## Installing
 
-(Note: This module has only been tested on Ubuntu 20.04 and may not work on non-Linux platforms.
+(Note: This module has only been tested on Ubuntu 20.04 and will probably not work on non-Linux platforms.
 Please report any issues.)
+
+This module is only compatible with Node.js >=12.11.0.
+
+For Linux x86_64, binaries may be available, in which case you will not need to install any other system dependencies,
+so skip to doing `npm install liboqs-node`.
 
 You will first need to install the [liboqs dependencies](https://github.com/open-quantum-safe/liboqs#quickstart).
 Follow the instructions for your OS.
 
 Additionally, you should have OpenSSL >=v1.1.1.
 
+In case you do not already have git installed, it will also be required.
+
 Then, install the module as usual: `npm install liboqs-node`.
 
-There are currently no prebuilt binaries.
+There are currently no prebuilt binaries for non-Linux operating systems.
 
 ## Issues
 
