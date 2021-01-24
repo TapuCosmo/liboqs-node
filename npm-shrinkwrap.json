@@ -1,11 +1,11 @@
 {
   "name": "liboqs-node",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
-      "version": "0.0.3",
+      "version": "0.1.0",
       "hasInstallScript": true,
       "license": "MIT",
       "dependencies": {

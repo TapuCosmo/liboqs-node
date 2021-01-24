@@ -1,6 +1,6 @@
 {
   "name": "liboqs-node",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Node.js bindings for liboqs.",
   "author": "Vietbao Tran <tapucosmo@gmail.com> (TapuCosmo)",
   "license": "MIT",
