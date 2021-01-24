@@ -8,8 +8,6 @@ environment:
   matrix:
     - nodejs_version: 12
       platform: x64
-    - nodejs_version: 13
-      platform: x64
     - nodejs_version: 14
       platform: x64
     - nodejs_version: 15

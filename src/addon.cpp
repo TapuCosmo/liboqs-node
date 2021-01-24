@@ -1,3 +1,4 @@
+#define NAPI_VERSION 6
 #include <napi.h>
 
 #include "KEMs.h"
