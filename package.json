@@ -10,7 +10,7 @@
     "build:all": "npm run liboqs:build && node-gyp rebuild",
     "build:package": "npm run build && node-pre-gyp package",
     "docs:build": "jsdoc -c ./docs/jsdoc.json",
-    "ensure_submodules": "node -e \"(require('fs').existsSync('./deps/liboqs/src/oqs.h') && require('fs').existsSync('./deps/liboqs-cpp/include/oqs_cpp.h')) || require('child_process').execSync('git submodule update --init --recursive', {stdio: 'inherit'})\"",
+    "ensure_submodules": "node ./scripts/ensure_submodules.js",
     "install": "node-pre-gyp install --fallback-to-build",
     "liboqs:build": "cd deps/liboqs && rm -rf ./build && mkdir build && cd build && cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -DOQS_BUILD_ONLY_LIB=ON -DOQS_PORTABLE_BUILD=ON -DOQS_USE_OPENSSL=ON -DOQS_USE_CPU_EXTENSIONS=ON -GNinja .. && ninja",
     "liboqs:build_if_not_exists": "node -e \"require('fs').existsSync('./deps/liboqs/build/include/oqs/oqs.h') || require('child_process').execSync('npm run liboqs:build', {stdio: 'inherit'})\"",
@@ -59,5 +59,12 @@
   },
   "engines": {
     "node": ">=12.11.0"
-  }
+  },
+  "files": [
+    "lib/",
+    "src/",
+    "scripts/",
+    "binding.gyp",
+    "npm-shrinkwrap.json"
+  ]
 }
