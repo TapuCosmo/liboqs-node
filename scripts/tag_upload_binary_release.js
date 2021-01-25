@@ -9,7 +9,7 @@ const githubToken = process.env.auth_token;
 const owner = "TapuCosmo";
 const repo = "liboqs-node";
 
-if (!process.env.APPVEYOR_REPO_TAG) {
+if (process.env.APPVEYOR_REPO_TAG !== "true") {
   console.log("Not a tagged push; exiting");
   process.exit();
 }
