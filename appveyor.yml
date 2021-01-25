@@ -5,6 +5,8 @@ image:
 build: off
 
 environment:
+  auth_token:
+    secure: b3cWFxhvVOhKJNSTbKjFwhUzimbeQMqjb/eUlJLGMdaeZrBaqPI0A8H/J8Mmrre2
   matrix:
     - nodejs_version: 12.20.1
       platform: x64
@@ -22,18 +24,7 @@ install:
   - sh: nvm install "$nodejs_version" && nvm use "$nodejs_version"
   - npm ci --ignore-scripts
   - npm run build:package
+  - npm run tag_upload_binary_release
 
 artifacts:
   - path: build/stage/*/*
-
-deploy:
-  release: build-$(APPVEYOR_BUILD_VERSION)
-  provider: GitHub
-  auth_token:
-    secure: b3cWFxhvVOhKJNSTbKjFwhUzimbeQMqjb/eUlJLGMdaeZrBaqPI0A8H/J8Mmrre2
-  artifact: build/stage/*/*
-  draft: true
-  prerelease: false
-  on:
-    branch: master
-    APPVEYOR_REPO_TAG: true

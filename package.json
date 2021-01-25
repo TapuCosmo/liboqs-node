@@ -17,6 +17,7 @@
     "prebuild": "npm run ensure_submodules && npm run liboqs:build_if_not_exists",
     "publish:prepare": "node-pre-gyp configure && node-pre-gyp rebuild && node-pre-gyp package",
     "publish:draft": "NODE_PRE_GYP_GITHUB_TOKEN=$(cat publish-token) node-pre-gyp-github publish",
+    "tag_upload_binary_release": "node ./scripts/tag_upload_binary_release.js",
     "test": "mocha --bail false"
   },
   "binary": {
@@ -51,6 +52,7 @@
     "node-pre-gyp": "^0.17.0"
   },
   "devDependencies": {
+    "@octokit/core": "^3.2.4",
     "chai": "^4.2.0",
     "chai-bytes": "^0.1.2",
     "docdash": "^1.2.0",
