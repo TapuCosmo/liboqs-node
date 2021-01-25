@@ -56,6 +56,40 @@
 
 
 
+    <section class="readme usertext">
+        <article><h1>liboqs-node</h1>
+<p>Node.js bindings for <a href="https://github.com/open-quantum-safe/liboqs">liboqs</a> (Open Quantum Safe) through <a href="https://github.com/open-quantum-safe/liboqs-cpp">liboqs-cpp</a>.</p>
+<p><strong>WARNING: The cryptographic algorithms used in liboqs are experimental. Do not use this module in production.</strong></p>
+<p>If you still decide to ignore the above warning, then please use this module only on data that had
+been encrypted with a standard and trusted algorithm beforehand.</p>
+<h2>API Documentation</h2>
+<p>Please see https://tapucosmo.github.io/liboqs-node/index.html.</p>
+<pre class="prettyprint source lang-js"><code>const {
+  Random, // Utilities for generating secure random numbers
+  KEMS, // Information on supported key encapsulation mechanisms
+  KeyEncapsulation, // Key encapsulation class and methods
+  Sigs, // Information on supported signature algorithms
+  Signature // Signature class and methods
+} = require(&quot;liboqs-node&quot;);
+</code></pre>
+<h2>Installing</h2>
+<p>(Note: This module has only been tested on Ubuntu 20.04 and will probably not work on non-Linux platforms.
+Please report any issues.)</p>
+<p>This module is only compatible with Node.js &gt;=12.11.0.</p>
+<p>For Linux x86_64, binaries may be available, in which case you will not need to install any other system dependencies,
+so skip to doing <code>npm install liboqs-node</code>.</p>
+<p>You will first need to install the <a href="https://github.com/open-quantum-safe/liboqs#quickstart">liboqs dependencies</a>.
+Follow the instructions for your OS.</p>
+<p>Additionally, you should have OpenSSL &gt;=v1.1.1.</p>
+<p>In case you do not already have git installed, it will also be required.</p>
+<p>Then, install the module as usual: <code>npm install liboqs-node</code>.</p>
+<p>There are currently no prebuilt binaries for non-Linux operating systems.</p>
+<h2>Issues</h2>
+<p>Please report issues at https://github.com/TapuCosmo/liboqs-node/issues.</p>
+<h2>Pull Requests</h2>
+<p>Feel free to submit pull requests to https://github.com/TapuCosmo/liboqs-node/pulls.</p></article>
+    </section>
+
 
 
 
