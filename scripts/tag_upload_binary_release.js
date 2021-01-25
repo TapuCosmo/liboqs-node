@@ -50,7 +50,8 @@ if (!binaries.length) {
         repo,
         tag_name: `v${version}`,
         name: `v${version}`,
-        body: `v${version}`
+        body: `v${version}`,
+        prerelease: true
       });
     } else {
       throw e;

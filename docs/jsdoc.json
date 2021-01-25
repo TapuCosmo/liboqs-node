@@ -32,7 +32,8 @@
   "source": {
     "include": [
       "./src/",
-      "./lib/"
+      "./lib/",
+      "./README.md"
     ],
     "includePattern": ".+\\.(cpp|h|js)$"
   }
