@@ -23,12 +23,12 @@ const octokit = new Octokit({
   auth: githubToken
 });
 
-if (!fs.existsSync(path.join(__dirname, "../build/stage", version))) {
+if (!fs.existsSync(path.join(__dirname, "../build/stage", `v${version}`))) {
   console.log("No binaries exist; exiting");
   process.exit();
 }
 
-const binaries = fs.readdirSync(path.join(__dirname, `../build/stage/${version}`));
+const binaries = fs.readdirSync(path.join(__dirname, "../build/stage", `v${version}`));
 
 if (!binaries.length) {
   console.log("No binaries exist; exiting");
@@ -59,7 +59,7 @@ if (!binaries.length) {
   }
   for (const binary of binaries) {
     console.log(`Uploading ${binary}`);
-    const binaryPath = path.join(__dirname, "../build/stage", version, binary);
+    const binaryPath = path.join(__dirname, "../build/stage", `v${version}`, binary);
     const stats = fs.statSync(binaryPath);
     await octokit.request(`POST ${res.data.upload_url}`, {
       headers: {
